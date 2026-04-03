@@ -1,59 +1,35 @@
-
-### ec2.tf
+### file-one.tf
 ```sh
-
-resource "aws_instance" "myec2" {
-   ami = "ami-082b5a644766e0e6f"
-   instance_type = "t2.micro"
-}
-
-### iam_user.tf
-
-```sh
-resource "aws_instance" "newec2" {
-   ami = "ami-082b5a644766e0e6f"
-   instance_type = "t2.micro"
+resource "local_file" "foo" {
+  content  = "Hello from KPLABS!"
+  filename = "${path.module}/kplabs.txt"
 }
 ```
 
+### file-two.tf
 
-### provider.tf
-
-```sh 
-provider "aws" {
-  region     = "us-west-2"
-  access_key = "YOUR-ACCESS-KEY"
-  secret_key = "YOUR-SECRET-KEY"
+```sh
+resource "local_file" "foo2" {
+  content  = "Hello!"
+  filename = "${path.module}/two.txt"
 }
 ```
 
-### semantics.tf
+### file-three.tf.json
 
 ```sh
-provider "aws" {
-  region     = "us-west-2"
-  access_key = "YOUR-ACCESS-KEY"
-  secret_key = "YOUR-SECRET-KEY"
-}
-
-variable "iam_user" {
-  default = "demouser"
-}
-
-resource "aws_instance" "myec2" {
-   ami = "ami-082b5a644766e0e6f"
-   instance_type = "t2.micro"
-}
-
-resource "aws_iam_user" "lb" {
-  name = var.iam_user
-  path = "/system/"
+{
+  "resource": {
+    "local_file": {
+      "json_example": {
+        "filename": "${path.module}/hello_from_json.txt",
+        "content": "This file was created using Terraform JSON syntax!"
+      }
+    }
+  }
 }
 ```
 
-### variables.tf
 ```sh
-variable "iam_user" {
-  default = "demouser"
-}
+terraform plan
 ```

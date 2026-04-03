@@ -1,18 +1,19 @@
 # Domain  - Terraform Cloud & Enterprise Capabilities
 
-The code mentioned in this document are used in the HashiCorp Certified Terraform Associate 2022 video course.
+The code mentioned in this document are used in the HashiCorp Certified Terraform Associate 2024 video course.
 
 
 # Video-Document Mapper
 
 | Sr No | Document Link |
 | ------ | ------ |
-| 1 | [Overview of Sentinel][PlDa] |
-| 2 | [Overview of Remote Backends][PlDb] |
+| 1 | [HCP Terraform - Core Practical][PlDa] |
+| 2 | [Overview of Sentinel][PlDb] |
+| 3 | [Implementing Remote Backend Operations][PlDc] |
 
 
 
 
-
-   [PlDa]: <https://github.com/zealvora/terraform-beginner-to-advanced-resource/blob/master/Terraform%20Cloud/sentinel-policy.tf>
-   [PlDb]: <https://github.com/zealvora/terraform-beginner-to-advanced-resource/blob/master/Terraform%20Cloud/remote-backend.md>
+   [PlDa]: <./terraform-cloud.md>
+   [PlDb]: <./sentinel.md>
+   [PlDc]: <./remote-backend.md>

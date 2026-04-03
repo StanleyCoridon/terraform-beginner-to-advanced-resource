@@ -1,28 +1,25 @@
 
-### ec2.tf
-```sh
-resource "aws_instance" "myec2" {
-  ami = "ami-bf5540df"
-  instance_type = "t2.micro"
-  vpc_security_group_ids = ["sg-6ae7d613", "sg-53370035"]
-  key_name = "remotepractical"
-  subnet_id = "subnet-9e3cfbc5"
+### import.tf
 
-  tags {
-    Name = "manual"
-  }
-}
-```
-### providers.tf
 ```sh
 provider "aws" {
-  region = "us-west-1"
+  region     = "us-east-1"
 }
 
+import {
+  to = aws_security_group.mysg
+  id = "sg-07f13feb262ba8b6f"
+}
 ```
 
-### Command To Import Resource
+### Command To Autogenerate Code for Imported Resource
 
 ```sh
-terraform import aws_instance.myec2 i-041886ebb7e9bd20
+terraform plan -generate-config-out=mysg.tf
+```
+
+### Command To Generate the Final State file
+
+```sh
+terraform apply -auto-approve
 ```
